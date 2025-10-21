@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodata dengan Kunci</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #2196f3, #21cbf3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Halaman login */
+    .login-box {
+      background: white ;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 300px;
+      animation: fadeIn 0.8s ease;
+    }
+
+    h2 {
+      color: #2196f3;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    button {
+      background: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #0b79d0;
+    }
+
+    p {
+      color: red;
+      font-size: 13px;
+      height: 18px;
+    }
+
+    /* Halaman biodata */
+    .biodata {
+      display: none;
+      text-align: center;
+      color: #333;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      width: 350px;
+      margin-top: 20px;
+    }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #2196f3;
+      object-fit: cover;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 15px;
+      text-align: left;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 6px 0;
+      font-size: 14px;
+    }
+
+    td:first-child {
+      color: #2196f3;
+      font-weight: bold;
+      width: 40%;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Halaman Kunci -->
+  <div class="login-box" id="loginBox">
+    <h2>🔐 Masukkan Kunci</h2>
+    <input type="password" id="password" placeholder="Masukkan kode akses">
+    <p id="error"></p>
+    <button onclick="checkPassword()">Login</button>
+  </div>
+
+  <!-- Halaman Biodata -->
+  <div class="biodata" id="biodataPage">
+    <h1 style="color:white;">Biodata Pribadi</h1>
+    <div class="card">
+      <img src="https://i.ibb.co/VWV1YHn/avatar.png" alt="Foto Profil">
+      <h2>Iqbal Ramadhan</h2>
+      <p><i>Pelajar SMK Kartanegara</i></p>
+      <table>
+        <tr><td>Nama</td><td>: Iqbal Ramadhan</td></tr>
+        <tr><td>Kelas</td><td>: X TKJ 2</td></tr>
+        <tr><td>Sekolah</td><td>: SMK KARTANEGARA</td></tr>
+        <tr><td>Alamat</td><td>: Jl. Bondo Ds.Wates Kab.Kediri</td></tr>
+        <tr><td>Email</td><td>: stopjudol@example.com</td></tr>
+      </table>
+      <button onclick="logout()">Keluar</button>
+    </div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const pass = document.getElementById("password").value;
+      const error = document.getElementById("error");
+
+      // 🔑 Ganti sandi di sini
+      if (pass === "321") {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("biodataPage").style.display = "block";
+        document.body.style.background = "linear-gradient(135deg, #21cbf3, #2196f3)";
+      } else {
+        error.textContent = "❌ KIjek Kleru CNjajalo neh";
+      }
+    }
+
+    function logout() {
+      document.getElementById("biodataPage").style.display = "none";
+      document.getElementById("loginBox").style.display = "block";
+      document.getElementById("password").value = "";
+      document.getElementById("error").textContent = "";
+      document.body.style.background = "linear-gradient(135deg, #2196f3, #21cbf3)";
+    }
+  </script>
+
+</body>
+</html>
